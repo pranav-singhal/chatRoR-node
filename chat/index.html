@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Hello Chat</title>
+    <script src="/socket.io/socket.io.js"></script>
+
+</head>
+
+
+<body>
+<h1>Hello Chat</h1>
+
+<ul id="messages">
+
+</ul>
+
+
+<textarea name="message" type="text" id="message"> </textarea> <br>
+<button id="send">Send</button>
+
+<script>
+
+    var random = Math.floor(Math.random() * 1000) + "";
+    console.log(random);
+    var socket = io("http://localhost:3002/?username="+random); // right address
+    var messages = document.getElementById('messages');
+
+
+    var textarea = document.getElementById('message');
+    var button = document.getElementById('send');
+    button.addEventListener('click', function(){
+        var message = textarea.value;
+
+        socket.emit('message', {message: message});
+
+        textarea.value = "";
+
+    });
+
+    socket.on('message', function (data) {
+        console.log(data);
+        var element = document.createElement('li');
+        element.innerHTML = data.username + " : " + data.message;
+        messages.appendChild(element);
+
+    });
+
+
+
+
+
+</script>
+
+
+<style>
+
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    ul#messages{
+
+        min-height: 500px;
+        background-color: grey;
+        width:100%;
+
+    }
+
+    ul li {
+        color: white;
+        padding-left: 20px;
+        font-size: 24px;
+    }
+    textarea#message{
+        width: 100%;
+        height: 100px;
+    }
+
+
+
+
+
+</style>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<h1>Chats#user</h1>
+<p>Find me in app/views/chats/user.html.erb</p>
+
+
+
+<%= form_for @user, url:'/chats/createuser', method: :post do |f|%>
+
+<%=f.label :username%>
+<%=f.text_field :username%><br />
+<%=f.submit%>
+<%end%>
