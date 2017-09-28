@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Hello Chat</title>
-    <script src="http://10.114.4.239:3002/socket.io/socket.io.js">
+    <script src="http://localhost:3002/socket.io/socket.io.js">
       console.log("inside of codeblock");
     </script>
 </head>
@@ -24,7 +24,7 @@
     // console.log(random);
     var username = '<%= User.find(params[:id]).username%>'
     console.log(username);
-    var socket = io.connect("http://10.114.4.239:3002/?username="+username); // right address
+    var socket = io.connect("http://localhost:3002/?username="+username); // right address
     var messages = document.getElementById('messages');
 
 

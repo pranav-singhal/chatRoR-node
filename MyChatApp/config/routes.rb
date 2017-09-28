@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   post 'chats/createuser' => 'chats#createuser'
   get 'chats/index/:id' => 'chats#index'
 
+  post '/chat' => 'chats#create'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
